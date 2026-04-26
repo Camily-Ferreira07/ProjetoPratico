@@ -127,4 +127,27 @@ function totalPaginasLidas(): number {
   return paginas
     .filter((_, i) => lido[i])
     .reduce((a, b) => a + b, 0);
+} 
+
+//Por Década
+function exibirPorDecada(): void {
+  console.log("=== POR DECADA ===");
+
+  const decadas: { [key: string]: string[] } = {};
+
+  anos.forEach((ano, i) => {
+    const decada = Math.floor(ano / 10) * 10 + "s";
+
+    if (!decadas[decada]) {
+      decadas[decada] = [];
+    }
+
+
+    decadas[decada].push(titulos[i]!);
+  });
+
+  for (const decada in decadas) {
+    console.log(`${decada}: ${decadas[decada]!.join(", ")}`);
+  }
 }
+
