@@ -1,4 +1,4 @@
-const titulos: string[] = [];
+let titulos: string[] = [];
 const autores: string[] = [];
 const anos: number[] = [];
 const paginas: number[] = [];
@@ -89,4 +89,42 @@ function listarLidos(): string[] {
 
 function listarPendentes(): string[] {
   return titulos.filter((_, i) => !lido[i]);
+}
+
+//Estatísticas
+function totalLivros(): number {
+  return titulos.length;
+}
+
+function totalLidos(): number {
+  return lido.filter(v => v).length;
+}
+
+function percentualLidos(): number {
+  return (totalLidos() / totalLivros()) * 100;
+}
+
+function mediaAvaliacoes(): number {
+  const notas = avaliacoes.filter(n => n > 0);
+  return notas.reduce((a, b) => a + b, 0) / notas.length;
+}
+
+function livroMaiorAvaliacao(): string {
+  let maior = 0;
+  let titulo = "";
+
+  avaliacoes.forEach((nota, i) => {
+    if (nota > maior) {
+      maior = nota;
+      titulo = titulos[i] ?? "";  // Usa "" se for undefined
+    }
+  });
+
+  return titulo;
+}
+
+function totalPaginasLidas(): number {
+  return paginas
+    .filter((_, i) => lido[i])
+    .reduce((a, b) => a + b, 0);
 }
