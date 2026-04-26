@@ -12,6 +12,7 @@ paginas.push(310, 464, 328, 256, 662);
 lido.push(true, true, false, true, false);
 avaliacoes.push(5, 4, 0, 5, 0);
 
+// Função Exibir biblioteca 
 function exibirBiblioteca(): void {
   console.log("=== MINHA BIBLIOTECA ===");
 
@@ -25,5 +26,35 @@ function exibirBiblioteca(): void {
     );
   });
 }
+
+exibirBiblioteca();
+
+//Função Cadastro e Remoção 
+function adicionarLivro(titulo: string, autor: string, ano: number, paginasLivro: number): void {
+  if (ano <= 0 || paginasLivro <= 0) {
+    console.log("Dados inválidos");
+    return;
+  }
+
+  titulos.push(titulo);
+  autores.push(autor);
+  anos.push(ano);
+  paginas.push(paginasLivro);
+  lido.push(false);
+  avaliacoes.push(0);
+}
+
+function removerLivro(indice: number): void {
+  titulos.splice(indice, 1);
+  autores.splice(indice, 1);
+  anos.splice(indice, 1);
+  paginas.splice(indice, 1);
+  lido.splice(indice, 1);
+  avaliacoes.splice(indice, 1);
+}
+
+adicionarLivro("Teste 1", "Autor X", 2020, 200);
+adicionarLivro("Teste 2", "Autor Y", 2021, 150);
+removerLivro(1);
 
 exibirBiblioteca();
