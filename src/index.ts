@@ -58,3 +58,15 @@ adicionarLivro("Teste 2", "Autor Y", 2021, 150);
 removerLivro(1);
 
 exibirBiblioteca();
+
+function buscarPorTitulo(termo: string): number[] {
+  return titulos
+    .map((t, i) => t.toLowerCase().includes(termo.toLowerCase()) ? i : -1)
+    .filter(i => i !== -1);
+} 
+
+function listarPorAutor(autor: string): string[] {
+  return autores
+    .map((a, i) => a === autor ? titulos[i] : null)
+    .filter(t => t !== null) as string[];
+}
