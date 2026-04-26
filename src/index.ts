@@ -55,7 +55,10 @@ function removerLivro(indice: number): void {
 
 adicionarLivro("O Arqueiro e a Feiticeira", "Helena Gomes", 2009, 283);
 adicionarLivro("O Principe Cruel", "Holly Black", 2018, 380);
-removerLivro(1);
+const indice1984 = titulos.indexOf("1984");
+if (indice1984 !== -1) {
+  removerLivro(indice1984);
+}
 
 // Buscar e Listar
 exibirBiblioteca();
